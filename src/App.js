@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaLinkedin, FaGithub, FaEnvelope, FaPhone, FaArrowRight, FaMapMarkerAlt } from 'react-icons/fa';
-import { FaJava, FaJs, FaHtml5, FaCss3Alt, FaReact, FaBootstrap, FaNodeJs, FaDatabase, FaFire } from 'react-icons/fa';
+import { FaJava, FaJs, FaHtml5, FaCss3Alt, FaReact, FaBootstrap, FaNodeJs, FaFire } from 'react-icons/fa';
 import { SiMysql } from 'react-icons/si';
 
 import './App.css';
