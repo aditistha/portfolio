@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { FaLinkedin, FaGithub, FaEnvelope, FaPhone, FaArrowRight, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaEnvelope, FaPhone, FaArrowRight, FaMapMarkerAlt, FaBars, FaTimes } from 'react-icons/fa';
 import { FaJava, FaJs, FaHtml5, FaCss3Alt, FaReact, FaBootstrap, FaNodeJs, FaFire } from 'react-icons/fa';
 import { SiMysql } from 'react-icons/si';
 
@@ -9,6 +9,7 @@ import profile from "./assets/aditi.png";
 
 const App = () => {
   const [showMore, setShowMore] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const profileRef = useRef(null);
   const educationRef = useRef(null);
   const experienceRef = useRef(null);
@@ -22,13 +23,41 @@ const App = () => {
 
   const scrollToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: 'smooth' });
+    setIsNavOpen(false);
   };
-
+  // Add this useEffect to close menu on ESC key
+useEffect(() => {
+  const handleEsc = (event) => {
+    if (event.key === 'Escape') {
+      setIsNavOpen(false);
+    }
+  };
+  window.addEventListener('keydown', handleEsc);
+  return () => window.removeEventListener('keydown', handleEsc);
+}, []);
+useEffect(() => {
+  if (isNavOpen) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'auto';
+  }
+  return () => {
+    document.body.style.overflow = 'auto';
+  };
+}, [isNavOpen]);
   return (
     <div className="portfolio-container">
+      {/* Mobile Navigation Toggle */}
+      <button 
+        className="mobile-nav-toggle"
+        onClick={() => setIsNavOpen(!isNavOpen)}
+        aria-label="Toggle navigation"
+      >
+        {isNavOpen ? <FaTimes /> : <FaBars />}
+      </button>
       {/* Floating Navigation */}
       <motion.nav 
-        className="floating-nav"
+        className={`floating-nav ${isNavOpen ? 'active' : ''}`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
@@ -164,10 +193,13 @@ I take pride in building solutions that not only solve the problems of today but
               <h4>Cardiff Metropolitan University, Cardiff, UK</h4>
               <p className="period">2024 – 2025</p>
               <ul>
-                <li>Developed expertise in web technologies, adaptive programming, cloud computing, and wireless networks and information security to design scalable, secure, and efficient systems.</li>
-                <li>Studied Advanced Programming, object-oriented design practices, and the construction of sophisticated software solutions.</li>
-                <li>Completed a Technology Dissertation and research-informed project that focuses on real-world computing challenges through practical implementation.</li>
-                <li>Involved in industry-informed case studies and live project briefs, with a focus on employability and transition into high-demand technology roles.</li>
+                My postgraduate journey in MSc Advanced Computer Science at 
+                Cardiff Metropolitan University equipped me with advanced knowledge
+                 in web technologies, cloud systems, and secure software design. A key highlight
+                  was my dissertation, where I developed an intelligent e-commerce chatbot using
+                   NLP concepts and live API integrations. The program's emphasis on real-world application 
+                   and industry case studies honed my ability to translate technical research into 
+                   scalable, user-focused solutions.
               </ul>
             </motion.div>
 
@@ -179,8 +211,13 @@ I take pride in building solutions that not only solve the problems of today but
               <h4>Apex College, Kathmandu – Affiliated to Pokhara University</h4>
               <p className="period">2018 – 2023</p>
               <ul>
-                <li>Acquired knowledge of programming, software engineering, databases, and IT management.</li>
-                <li>Gained practical experience in team-based projects, statistics, and systems analysis.</li>
+                My undergraduate studies gave me an excellent grounding in programming, software engineering, 
+                and IT systems. I got to develop my first full-stack applications, managing databases with 
+                MySQL, and right from the analysis of a problem to deployment of the solution. Systems analysis 
+                classes developed in me the capability to balance technical precision with the user's perspective.
+                 Outside the classroom, I performed very well in all team projects and represented my class, 
+                 managing all group works. I gained experience leading empathetically, being on top of deadlines, 
+                 and finding ways to align team member efforts toward the achievement of a common goal.
               </ul>
             </motion.div>
 
@@ -231,13 +268,15 @@ I take pride in building solutions that not only solve the problems of today but
             <p className="subtitle">Dissertation Project, Cardiff Metropolitan University</p>
             
             <ul>
-              <li>Built a ReactJS-based chatbot interface for an e-commerce website that supports intent detection and simulated human-agent escalation.</li>
-              <li>Built a full-stack chatbot system for an online shopping website.</li>
-              <li>Integrated with backend APIs to handle product queries and display responses dynamically.</li>
-              <li>Focused on clean UI, modular components, and responsive layout for smooth user experience.</li>
+              As part of the fulfillment of the master’s program dissertation, I created an intelligent 
+              chat bot that helps consumers on an e-commerce site. My creation not only allows for intent
+               analysis but also escalates the process to a customer support representative when necessary. 
+               Additionally, I implemented the frontend design using React and backend functions to dynamically retrieve 
+               information about the product being ordered. My creation includes an intuitive conversational 
+               interface and handles inquiries from the consumer effectively.
             </ul>
             <a 
-              href="https://github.com/adilistha/online-shopping-platform-chatbot" 
+              href="https://github.com/aditistha/online-shopping-platform-chatbot" 
               target="_blank" 
               rel="noopener noreferrer"
               className="project-link"
@@ -256,13 +295,14 @@ I take pride in building solutions that not only solve the problems of today but
             <p className="subtitle">Final Year Project, Cardiff Metropolitan University</p>
             
             <ul>
-              <li>Developed a daily expense-tracking Android application using Java in Android Studio.</li>
-              <li>Created simple screens for adding, viewing, and managing expenditure records.</li>
-              <li>Setup project and manage the app using Gradle.</li>
-              <li>Focused on making the app as user-friendly and visually clear for the users.</li>
+              This Android application helps people handle every day finances in a simple and easy-to-understand manner. 
+              I built this application from scratch and made sure to it was user-friendly. This includes features such as: 
+              expense categories, expense summary, and a simple way to add the expense. I used Gradle to implement dependencies
+               and made sure the application is easy to handle and scalable. This application should not only give a personal experience 
+               but also not confuse the user.
             </ul>
             <a 
-              href="https://github.com/adilistha/Personal-expense-tracker" 
+              href="https://github.com/aditistha/Personal-expense-tracker" 
               target="_blank" 
               rel="noopener noreferrer"
               className="project-link"
@@ -278,8 +318,12 @@ I take pride in building solutions that not only solve the problems of today but
             <p className="subtitle">Final Year Project, Apex College</p>
            
             <ul>
-              <li>In this major project group, I worked as frontend developer and developed beautiful & responsive User Interfaces for our WebApp.</li>
-              <li>Implemented various technologies like WebSocket, ReactJS(Router, Redux, Hooks etc.), Form Validations, Bootstrap CSS etc.</li>
+              Designed the frontend of an all-rounded restaurant management software with the goal of enhancing 
+              the efficiency of customer service when processing orders. My software includes an orders dashboard 
+              with real-time updates using WebSocket technology for instant receipt and update of orders. I applied 
+              React components with the use of Redux to manage states for an interactive and responsive user interface.
+               My software also includes a mobile-friendly responsive design with forms for eliminating user mistakes 
+               during data entry.
             </ul> 
             <a 
               href="https://github.com/aditistha/Restaurant-Order-Management-System" 
