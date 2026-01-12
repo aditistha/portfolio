@@ -5,7 +5,7 @@ import { FaJava, FaJs, FaHtml5, FaCss3Alt, FaReact, FaBootstrap, FaNodeJs, FaFir
 import { SiMysql } from 'react-icons/si';
 
 import './App.css';
-import profile from "./assets/aditi.png";
+import profile from "./assets/Sub.png";
 
 const App = () => {
   const [showMore, setShowMore] = useState(false);
@@ -73,7 +73,109 @@ useEffect(() => {
       </motion.nav>
 
       {/* Header */}
-      <motion.header
+      {/* Header */}
+<motion.header
+  style={{ scale: headerScale, opacity: headerOpacity }}
+  className="header"
+  ref={profileRef}
+>
+  <div className="header-grid reversed">
+    {/* Left Column - Header Text */}
+    <div className="header-text">
+      <motion.h1
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.2 }}
+      >
+        Hi, I'm Aditi Shrestha
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.3 }}
+        className="header-subtitle"
+      >
+        Software Developer & Web Specialist
+      </motion.p>
+      
+     
+    </div>
+
+    {/* Center Column - Profile Image */}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      className="profile-image-container"
+    >
+      <div className="profile-image-frame">
+        <img 
+          src={profile} 
+          alt="Aditi Shrestha"
+          className="profile-image"
+        />
+      </div>
+    </motion.div>
+
+    {/* Right Column - About Section */}
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.6 }}
+      className="about-section"
+    >
+      <p>
+       I am a dedicated and passionate software developer with a strong balance of theoretical knowledge and practical experience 
+  in building modern digital solutions. My skills span across Java, JavaScript, ReactJS, and MySQL, and I enjoy creating 
+  everything from responsive web applications and Android apps to intelligent, AI-enhanced systems.
+
+Both my academic research and professional experiences influence my approach to development. Great software starts with 
+the user by creating clean, intuitive interfaces, but it also needs to be supported by strong, scalable architecture. 
+I take pride in building solutions that not only solve the problems of today but are designed to adapt and grow into tomorrow.
+      </p>
+
+      <motion.div
+        layout
+        animate={{ opacity: showMore ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        style={{ overflow: "hidden" }}
+      >
+        {showMore && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1 }}
+          >
+            Collaboration and communication are at the heart of how I work. Having served as a Class Representative during my studies 
+        taught me the essence of listening, guiding, and working together to achieve shared goals. I work well in teams where there 
+        is an open exchange of ideas and ideas become projects through collaboration.
+
+        I am excited by real-world challenges and am always seeking out opportunities for learning, contribution, and creation of meaningful 
+        technology with others. Whether through code, collaboration, or continuous learning, my aim is to build software that makes a difference.
+          </motion.p>
+        )}
+      </motion.div>
+
+      <motion.button 
+        className="show-more-btn" 
+        onClick={() => setShowMore(!showMore)}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        layout
+      >
+        {showMore ? "Show Less" : "Show More"} 
+        <motion.span
+          animate={{ rotate: showMore ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+          style={{ display: "inline-block", marginLeft: "0.5rem" }}
+        >
+          <FaArrowRight />
+        </motion.span>
+      </motion.button>
+    </motion.div>
+  </div>
+</motion.header>
+      {/* <motion.header
         style={{ scale: headerScale, opacity: headerOpacity }}
         className="header"
         ref={profileRef}
@@ -112,7 +214,7 @@ the user by creating clean, intuitive interfaces, but it also needs to be suppor
 I take pride in building solutions that not only solve the problems of today but are designed to adapt and grow into tomorrow.
   </p>
 
-  {/* Layout animation - smoother alternative */}
+
   <motion.div
     layout
     animate={{ opacity: showMore ? 1 : 0 }}
@@ -160,6 +262,9 @@ I take pride in building solutions that not only solve the problems of today but
             transition={{ duration: 0.5 }}
             className="profile-image-container"
           >
+              <div className="floating-element"></div>
+  <div className="floating-element"></div>
+  <div className="floating-element"></div>
             <img 
               src={profile} 
               alt="Aditi Shrestha"
@@ -169,7 +274,7 @@ I take pride in building solutions that not only solve the problems of today but
             <div className="profile-image-border"></div>
           </motion.div>
         </div>
-      </motion.header>
+      </motion.header> */}
 
       {/* Main Content */}
       <main className="main-content">
