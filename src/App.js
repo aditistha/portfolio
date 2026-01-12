@@ -95,7 +95,7 @@ useEffect(() => {
         transition={{ delay: 0.3 }}
         className="header-subtitle"
       >
-        Software Developer & Web Specialist
+         Web Developer | Software Developer
       </motion.p>
       
      
