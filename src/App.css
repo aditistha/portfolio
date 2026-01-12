@@ -135,7 +135,123 @@ ul {
 }
 
 /* Center Column - Profile Image */
+/* ===== Center Column - Profile Image with Colorful Patterns ===== */
 .profile-image-container {
+  position: relative;
+  z-index: 10;
+  min-width: 300px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Colorful pattern background */
+
+
+
+
+/* Additional floating shapes */
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+  filter: blur(5px);
+  z-index: 0;
+}
+
+.floating-shape.shape-1 {
+  top: 10%;
+ left: -50px;
+  width: 500px;
+  height: 600px;
+  background: linear-gradient(135deg, 
+    rgba(54, 40, 90, 0.12) 0%,
+    rgba(34, 14, 88, 0.04) 100%);
+  animation-delay: 1s;
+}
+
+
+
+
+
+.profile-image {
+  width: 100%;
+  height: auto;
+ 
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s ease;
+
+
+}
+
+.profile-image:hover {
+  transform: translateY(-8px) scale(1.02);
+
+}
+
+
+
+.profile-image:hover::after {
+  opacity: 1;
+}
+
+/* Enhanced floating animation */
+@keyframes float {
+  0%, 100% { 
+    transform: translate(0, 0) rotate(0deg); 
+  }
+  33% { 
+    transform: translate(5px, -10px) rotate(120deg); 
+  }
+  66% { 
+    transform: translate(-5px, 5px) rotate(240deg); 
+  }
+}
+
+/* Glow effect */
+.profile-image-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 107, 0.2) 0%,
+    rgba(78, 205, 196, 0.2) 50%,
+    rgba(124, 77, 255, 0.2) 100%
+  );
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.profile-image-container:hover .profile-image-glow {
+  opacity: 0.5;
+}
+
+/* ===== Responsive adjustments ===== */
+@media (max-width: 768px) {
+  .profile-image-frame {
+    padding: 15px;
+  }
+  
+  .profile-image {
+    border-width: 6px;
+  }
+  
+  .floating-shape {
+    display: none; /* Hide floating shapes on mobile for better performance */
+  }
+  
+  .profile-image-frame::before,
+  .profile-image-frame::after {
+    display: none;
+  }
+}
+/* .profile-image-container {
   position: relative;
   z-index: 10;
   min-width: 300px;
@@ -175,7 +291,7 @@ ul {
 
 .profile-image:hover::after {
   opacity: 1;
-}
+} */
 
 
 /* Right Column - About Section */

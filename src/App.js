@@ -102,20 +102,33 @@ useEffect(() => {
     </div>
 
     {/* Center Column - Profile Image */}
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
-      className="profile-image-container"
-    >
-      <div className="profile-image-frame">
-        <img 
-          src={profile} 
-          alt="Aditi Shrestha"
-          className="profile-image"
-        />
-      </div>
-    </motion.div>
+ {/* Center Column - Profile Image */}
+<motion.div
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.5 }}
+  className="profile-image-container"
+>
+  <div className="profile-image-frame">
+    {/* Colorful floating shapes */}
+    <div className="floating-shape shape-1"></div>
+    <div className="floating-shape shape-2"></div>
+    <div className="floating-shape shape-3"></div>
+    <div className="floating-shape shape-4"></div>
+    
+    {/* Pattern overlay */}
+    <div className="pattern-overlay"></div>
+    
+    {/* Glow effect */}
+    <div className="profile-image-glow"></div>
+    
+    <img 
+      src={profile} 
+      alt="Aditi Shrestha"
+      className="profile-image"
+    />
+  </div>
+</motion.div>
 
     {/* Right Column - About Section */}
     <motion.div
